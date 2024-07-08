@@ -119,3 +119,26 @@ for i in range(16):
 print(f"The best parameters are {best_param_dict}")
 print(f"The list of scores (mean absolute error) are {scores_list}")
 print(f"The average performance is {np.mean(scores_list)}")
+
+#The best parameters are
+                        #  {'1 column': {'max_depth': 5, 'max_features': 2, 'n_estimators': 50}, 
+                        #   '2 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 80}, 
+                        #   '3 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 140}, 
+                        #   '4 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 20}, 
+                        #   '5 column': {'max_depth': 8, 'max_features': 2, 'n_estimators': 30}, 
+                        #   '6 column': {'max_depth': 6, 'max_features': 3, 'n_estimators': 90}, 
+                        #   '7 column': {'max_depth': 5, 'max_features': 2, 'n_estimators': 90}, 
+                        #   '8 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 90}, 
+                        #   '9 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 90}, 
+                        #   '10 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 10}, 
+                        #   '11 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 10}, 
+                        #   '12 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 20}, 
+                        #   '13 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 30}, 
+                        #   '14 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 120}, 
+                        #   '15 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 120}, 
+                        #   '16 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 140}}
+#The list of scores (mean absolute error) are
+                    # [0.8261802564920877, 0.7558332389563769, 0.641316259121996, 0.6665849246506932,
+                    # 0.900231269164701, 0.8273990549184675, 0.744042427685627, 0.6937356107115706, 
+                    # 0.6758924643351577, 0.6256811290788289, 0.5977666525426375, 0.7530039657558006, 
+                    # 0.7810863614024693, 0.7597234201281696, 0.7315923597523083, 0.6940271663365525]
