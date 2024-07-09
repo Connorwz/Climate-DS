@@ -134,7 +134,8 @@ def xgboost_train(x, y, valid_x, valid_y, lr, max_depth, epochs, k_std, k_mean):
         'objective': 'reg:absoluteerror',
         'learning_rate': lr,
         'max_depth': max_depth,
-        'eval_metric': 'mae'
+        'eval_metric': 'mae',
+        #'device': 'cuda'
     }
 
     evals = [(dtrain, 'train'), (dvalid, 'eval')]
