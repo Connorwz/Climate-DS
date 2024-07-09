@@ -105,11 +105,11 @@ for i in range(16):
     torch.cuda.empty_cache()
     gc.collect()
 
-    rfr = RFR()
-    param_grid = {"n_estimators": list(range(10,150,10)), 
-                "max_depth": list(range(5,25)),
+    rfr = RFR(random_state = 66)
+    param_grid = {"n_estimators": list(range(10,160,10)), 
+                "max_depth": list(range(1,11)),
                 "max_features": list(range(1,5))}
-    GSCV = GridSearchCV(rfr,param_grid,scoring = "neg_mean_absolute_error")
+    GSCV = GridSearchCV(rfr,param_grid,scoring = "neg_mean_squared_error")
     GSCV.fit(tr_x_tune,tr_y_tune[:,i])
     best_param_dict[f"{i+1} column"] = GSCV.best_params_
     scores_list.append(-GSCV.best_score_)
@@ -117,10 +117,11 @@ for i in range(16):
     del rfr,GSCV
 
 print(f"The best parameters are {best_param_dict}")
-print(f"The list of scores (mean absolute error) are {scores_list}")
+print(f"The list of scores (mean squared error) are {scores_list}")
 print(f"The average performance is {np.mean(scores_list)}")
 
-#The best parameters are
+# MAE as metric
+# The best parameters are
                         #  {'1 column': {'max_depth': 5, 'max_features': 2, 'n_estimators': 50}, 
                         #   '2 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 80}, 
                         #   '3 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 140}, 
@@ -137,8 +138,32 @@ print(f"The average performance is {np.mean(scores_list)}")
                         #   '14 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 120}, 
                         #   '15 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 120}, 
                         #   '16 column': {'max_depth': 5, 'max_features': 1, 'n_estimators': 140}}
-#The list of scores (mean absolute error) are
+# The list of scores (mean absolute error) are
                     # [0.8261802564920877, 0.7558332389563769, 0.641316259121996, 0.6665849246506932,
                     # 0.900231269164701, 0.8273990549184675, 0.744042427685627, 0.6937356107115706, 
                     # 0.6758924643351577, 0.6256811290788289, 0.5977666525426375, 0.7530039657558006, 
                     # 0.7810863614024693, 0.7597234201281696, 0.7315923597523083, 0.6940271663365525]
+
+# MSE as metric
+# The best parameters are 
+                        # {'1 column': {'max_depth': 1, 'max_features': 3, 'n_estimators': 130}, 
+                        # '2 column': {'max_depth': 2, 'max_features': 1, 'n_estimators': 100}, 
+                        # '3 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 90}, 
+                        # '4 column': {'max_depth': 1, 'max_features': 4, 'n_estimators': 150}, 
+                        # '5 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 60}, 
+                        # '6 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 90}, 
+                        # '7 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 70}, 
+                        # '8 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 110}, 
+                        # '9 column': {'max_depth': 2, 'max_features': 1, 'n_estimators': 10}, 
+                        # '10 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 10}, 
+                        # '11 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 40}, 
+                        # '12 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 20}, 
+                        # '13 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 70}, 
+                        # '14 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 60}, 
+                        # '15 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 150},
+                        # '16 column': {'max_depth': 1, 'max_features': 1, 'n_estimators': 150}}
+# The list of scores (mean squared error) are 
+                        # [1.004898988970417, 1.005664965347105, 1.0078069400648908, 1.0107348054347667, 
+                        #  1.0030113798044062, 0.9991510372487049, 0.9975427637758436, 0.9925515306370241,
+                        #  0.9894305826256865, 0.9862748933787826, 0.983556185376802, 0.9963159572151905, 
+                        #  1.0033396774325605, 1.0006888161916057, 0.9988668042053632, 0.9988153059455639]
