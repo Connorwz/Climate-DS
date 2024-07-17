@@ -13,3 +13,9 @@
 8. Use cubic smoothing splines, weighted combination of splines (more details on whiteboard)
 9. Feature function regression
 10. Customize loss function, then find g-hat(sigma), then compare it with g(sigma). 
+
+# 07/16/2024
+1. How epoch in xgboost? Since in boosting weight is changed by previous round.
+2. 2*2 plots: draw for each nodes, for xgboost and neural network
+3. Plot mae, cc for variable, marginal dependence plot between curve and nodes
+4. learn how xgboost works and discuss
