@@ -19,4 +19,3 @@
 2. 2*2 plots: draw for each nodes, for xgboost and neural network
 3. Plot mae, cc for variable, marginal dependence plot between curve and nodes
 4. learn how xgboost works and discuss
-5. test 
